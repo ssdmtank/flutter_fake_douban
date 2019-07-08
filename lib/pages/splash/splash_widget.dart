@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fake_douban/constant/constant.dart';
+import 'package:flutter_fake_douban/pages/container_page.dart';
 import 'package:flutter_fake_douban/util/screen_utils.dart';
 
 //App 首页
@@ -13,6 +14,8 @@ class SplashWidget extends StatefulWidget {
 class _SplashWidgetState extends State<SplashWidget> {
   //是否显示启动广告
   bool showAd = true;
+  //底部菜单及页面
+  var container = ContainerPage();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,11 @@ class _SplashWidgetState extends State<SplashWidget> {
         // 控制child是否显示
         // 当offstage为true，控件隐藏； 当offstage为false，显示；
         // 当Offstage不可见的时候，如果child有动画等，需要手动停掉，Offstage并不会停掉动画等操作。
-        Offstage(),
+        Offstage(
+          child: container,
+          offstage: showAd,//广告消失后显示主页
+        ),
+        // 首页前置页面
         Offstage(
           child: Container(
             color: Colors.white,
