@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fake_douban/router.dart';
 import 'dart:math' as math;
 import 'package:flutter_fake_douban/widget/search_text_field_widget.dart';
 
@@ -54,6 +55,7 @@ class _BookAudioVideoPageState extends State<BookAudioVideoPage>
 Widget _getNestedScrollView(tabBar) {
   return NestedScrollView(
     headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+      String hintText = '用一部电影来形容你的2018';
       return <Widget>[
         //文本搜索框
         SliverToBoxAdapter(
@@ -61,10 +63,9 @@ Widget _getNestedScrollView(tabBar) {
             color: Colors.white,
             padding: const EdgeInsets.all(10.0),
             child: SearchTextFieldWidget(
-              hintText: '用一部电影来形容你的2018',
+              hintText: hintText,
               onTab: (){
-                //TODO
-//                Router
+                Router.push(context, Router.searchPage, hintText);
               },
             )
           ),
