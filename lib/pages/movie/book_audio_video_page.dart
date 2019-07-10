@@ -52,7 +52,7 @@ class _BookAudioVideoPageState extends State<BookAudioVideoPage>
 }
 
 //滚动组件
-Widget _getNestedScrollView(tabBar) {
+Widget _getNestedScrollView(Widget tabBar) {
   return NestedScrollView(
     headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
       String hintText = '用一部电影来形容你的2018';
@@ -73,9 +73,20 @@ Widget _getNestedScrollView(tabBar) {
         SliverPersistentHeader(
             floating: true, //展开appbar
             pinned: true, //保留appbar
-            delegate: _SliverAppBarDelegate())
+            delegate: _SliverAppBarDelegate(
+              maxHeight: 49.0,
+              minHeight: 49.0,
+              child: Container(
+                color: Colors.white,
+                child: tabBar,
+              )
+            ))
       ];
     },
+    body: Container(
+      //TODO
+      child: Text("1"),
+    )
   );
 }
 
