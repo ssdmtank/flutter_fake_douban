@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fake_douban/pages/movie/book_audio_video_page.dart';
 
+import 'home/home_page.dart';
+
 ///这个页面是作为整个APP的最外层的容器，以Tab为基础控制每个item的显示与隐藏
 class ContainerPage extends StatefulWidget {
   ContainerPage({Key key}) : super(key: key);
@@ -39,8 +41,7 @@ class _ContainerPageState extends State<ContainerPage> {
     super.initState();
     if (pages == null) {
       pages = [
-//        HomePage(),
-        BookAudioVideoPage(),
+        HomePage(),
         BookAudioVideoPage(),
         BookAudioVideoPage(),
         BookAudioVideoPage(),
@@ -82,7 +83,7 @@ class _ContainerPageState extends State<ContainerPage> {
       offstage: _selectIndex != index,
       child: TickerMode(
         enabled: _selectIndex == index,
-        child: pages[0],
+        child: pages[index],
       ),
     );
   }

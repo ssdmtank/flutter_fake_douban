@@ -66,7 +66,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                           padding: const EdgeInsets.only(
                               left: 10.0, right: 10.0, top: 2.0, bottom: 2.0),
                           child: CountDownWidget(
-                            onCountDownFinshCallBack: (bool value) {
+                            onCountDownFinishCallBack: (bool value) {
                               if (value) {
                                 setState(() {
                                   showAd = false;
@@ -121,9 +121,9 @@ class _SplashWidgetState extends State<SplashWidget> {
 }
 
 class CountDownWidget extends StatefulWidget {
-  final onCountDownFinshCallBack;
+  final onCountDownFinishCallBack;
 
-  CountDownWidget({Key key, @required this.onCountDownFinshCallBack})
+  CountDownWidget({Key key, @required this.onCountDownFinishCallBack})
       : super(key: key);
 
   @override
@@ -155,7 +155,7 @@ class _CountDownWidgetState extends State<CountDownWidget> {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {});
       if (_seconds <= 1) {
-        widget.onCountDownFinshCallBack(true);
+        widget.onCountDownFinishCallBack(true);
         _cancelTimer();
         return;
       }
